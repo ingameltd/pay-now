@@ -3,3 +3,4 @@ export * from './errors';
 export * from './payment';
 export * from './paynow';
 export * from './responses';
+export * from './utils';

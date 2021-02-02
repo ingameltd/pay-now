@@ -1,7 +1,13 @@
 import crypto from 'crypto';
 
-
-export function jsonStringify (obj: unknown) {
+/**
+ * Stringify an object with 4 spaces
+ *
+ * @export
+ * @param {object} obj
+ * @returns
+ */
+export function jsonStringify (obj: object) {
     return JSON.stringify(obj, null, 4)
 }
 
