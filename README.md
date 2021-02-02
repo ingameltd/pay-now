@@ -74,7 +74,7 @@ console.log(result)
 
 To verify a notification you must check integrity of an incoming message and compare it with `Signature` header field(you can set Notification endpoint in panel)
 
-#### Example with Express:
+#### Example with Express
 
 ```typescript
 const calculatedSignature = paynow.calculateSignature(req.body)

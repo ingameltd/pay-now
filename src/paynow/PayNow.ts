@@ -51,7 +51,7 @@ export class PayNow {
     public async createPayment (payment: Payment): Promise<PaymentCreatedResponse> {
         try {
             const paymentRequest = jsonStringify(payment)
-            const signature = this.calculateSignature(paymentRequest)
+            const signature = this.calculateSignature(payment)
 
             const { data } = await this.client.post(EndpointPayments, paymentRequest, {
                 headers: {
@@ -95,11 +95,14 @@ export class PayNow {
     /**
      * Calculate signature
      *
-     * @param {string} requestData - request data as a string
+     * @param {string|object} data - data for calculate signature
      * @returns {string}
      * @memberof PayNow
      */
-    public calculateSignature (requestData: string): string {
-        return calculateHmac(this.signatureKey, requestData)
+    public calculateSignature (data: string | object): string {
+        if (typeof data === 'object') {
+            data = jsonStringify(data)
+        }
+        return calculateHmac(this.signatureKey, data)
     }
 }
