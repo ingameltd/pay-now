@@ -1,6 +1,6 @@
 # PayNow for NodeJS
 
-![Build](https://github.com/ingameltd/pay-now/workflows/Build/badge.svg) ![](https://img.shields.io/github/license/ingameltd/pay-now) ![](https://img.shields.io/npm/v/@ingameltd/pay-now) ![](https://img.shields.io/github/last-commit/ingameltd/pay-now)
+![Build](https://github.com/ingameltd/pay-now/workflows/Build/badge.svg) ![License](https://img.shields.io/github/license/ingameltd/pay-now) ![npmversion](https://img.shields.io/npm/v/@ingameltd/pay-now) ![last-commit](https://img.shields.io/github/last-commit/ingameltd/pay-now)
 
 NodeJS library for [PayNow](https://paynow.pl) payment service. This library is written in Typescript to provide
 best typesafety.
@@ -10,7 +10,6 @@ Official REST API docs can be found [here](https://docs.paynow.pl/).
 ## Documentation
 
 Documentation can be in read [here](https://ingameltd.github.io/pay-now).
-
 
 ## Installation
 
@@ -50,7 +49,7 @@ const payNow = new PayNow(
 ```typescript
 const payment: Payment = {
     amount: 1000, // 10,00 PLN
-    externalId: uuidv4(), // unique id from merchant system
+    externalId: '9fea23c7-cd5c-4884-9842-6f8592be65df', // unique id from merchant system
     description: "Test transaction",
     buyer: {
         email: "jhondoe@example.com"
