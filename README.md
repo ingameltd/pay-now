@@ -1,6 +1,6 @@
 # PayNow for NodeJS
 
-![Build](https://github.com/ingameltd/pay-now/workflows/Build/badge.svg) ![License](https://img.shields.io/github/license/ingameltd/pay-now) ![npmversion](https://img.shields.io/npm/v/@ingameltd/pay-now) ![last-commit](https://img.shields.io/github/last-commit/ingameltd/pay-now)
+![Build](https://github.com/ingameltd/pay-now/workflows/Build/badge.svg) ![License](https://img.shields.io/github/license/ingameltd/pay-now) ![Package Version](https://img.shields.io/npm/v/@ingameltd/pay-now) ![Last Commit](https://img.shields.io/github/last-commit/ingameltd/pay-now)
 
 NodeJS library for [PayNow](https://paynow.pl) payment service. This library is written in Typescript to provide
 best typesafety.
