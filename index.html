@@ -1,0 +1,246 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@ingameltd/pay-now</title>
+	<meta name="description" content="Documentation for @ingameltd/pay-now">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@ingameltd/pay-now</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@ingameltd/pay-now</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#paynow-for-nodejs" id="paynow-for-nodejs" style="color: inherit; text-decoration: none;">
+					<h1>PayNow for NodeJS</h1>
+				</a>
+				<p><img src="https://github.com/ingameltd/pay-now/workflows/Build/badge.svg" alt="Build"> <img src="https://img.shields.io/github/license/ingameltd/pay-now" alt="License"> <img src="https://img.shields.io/npm/v/@ingameltd/pay-now" alt="Package Version"> <img src="https://img.shields.io/github/last-commit/ingameltd/pay-now" alt="Last Commit"></p>
+				<p>NodeJS library for <a href="https://paynow.pl">PayNow</a> payment service. This library is written in Typescript to provide
+				best typesafety.</p>
+				<p>Official REST API docs can be found <a href="https://docs.paynow.pl/">here</a>.</p>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>Documentation can be in read <a href="https://ingameltd.github.io/pay-now">here</a>.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-bash"><span style="color: #000000">npm install --save @ingameltd/pay-now</span>
+</code></pre>
+				<a href="#typescript" id="typescript" style="color: inherit; text-decoration: none;">
+					<h2>Typescript</h2>
+				</a>
+				<a href="#importing" id="importing" style="color: inherit; text-decoration: none;">
+					<h3>Importing</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">PayNow</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">Payment</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">PaymentCreatedResponse</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;@ingameltd/pay-now&quot;</span><span style="color: #000000">;</span>
+</code></pre>
+				<a href="#initialization" id="initialization" style="color: inherit; text-decoration: none;">
+					<h3>Initialization</h3>
+				</a>
+				<ul>
+					<li><strong>apiKey</strong> - API Key from PayNow panel</li>
+					<li><strong>signatureKey</strong> - Signature Key from PayNow panel</li>
+				</ul>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">payNow</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">PayNow</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #001080">apiKey</span><span style="color: #000000">, </span>
+<span style="color: #000000">  </span><span style="color: #001080">signatureKey</span><span style="color: #000000">, </span>
+<span style="color: #000000">  { </span>
+<span style="color: #000000">    </span><span style="color: #001080">sandbox:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span><span style="color: #000000"> </span><span style="color: #008000">// enable or disable sandbox</span>
+<span style="color: #000000">  }</span>
+<span style="color: #000000">);</span>
+</code></pre>
+				<a href="#create-payment" id="create-payment" style="color: inherit; text-decoration: none;">
+					<h3>Create payment</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">payment</span><span style="color: #000000">: </span><span style="color: #267F99">Payment</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">amount:</span><span style="color: #000000"> </span><span style="color: #098658">1000</span><span style="color: #000000">, </span><span style="color: #008000">// 10,00 PLN</span>
+<span style="color: #000000">    </span><span style="color: #001080">externalId:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;9fea23c7-cd5c-4884-9842-6f8592be65df&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// unique id from merchant system</span>
+<span style="color: #000000">    </span><span style="color: #001080">description:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;Test transaction&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">buyer:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">email:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;jhondoe@example.com&quot;</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">}</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000">: </span><span style="color: #267F99">PaymentCreatedResponse</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">payNow</span><span style="color: #000000">.</span><span style="color: #795E26">createPayment</span><span style="color: #000000">(</span><span style="color: #001080">payment</span><span style="color: #000000">)</span>
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">result</span><span style="color: #000000">)</span>
+</code></pre>
+				<a href="#get-payment-status" id="get-payment-status" style="color: inherit; text-decoration: none;">
+					<h3>Get payment status</h3>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #008000">// payment id from paynow</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000">: </span><span style="color: #267F99">PaymentStatusResponse</span><span style="color: #000000"> = </span><span style="color: #001080">payNow</span><span style="color: #000000">.</span><span style="color: #795E26">paymentStatus</span><span style="color: #000000">(</span><span style="color: #001080">paymentId</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">result</span><span style="color: #000000">)</span>
+</code></pre>
+				<a href="#check-integrity-of-incoming-message" id="check-integrity-of-incoming-message" style="color: inherit; text-decoration: none;">
+					<h3>Check integrity of incoming message</h3>
+				</a>
+				<p>To verify a notification you must check integrity of an incoming message and compare it with <code>Signature</code> header field(you can set Notification endpoint in panel)</p>
+				<a href="#example-with-express" id="example-with-express" style="color: inherit; text-decoration: none;">
+					<h4>Example with Express</h4>
+				</a>
+				<pre><code class="language-typescript"><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">calculatedSignature</span><span style="color: #000000"> = </span><span style="color: #001080">paynow</span><span style="color: #000000">.</span><span style="color: #795E26">calculateSignature</span><span style="color: #000000">(</span><span style="color: #001080">req</span><span style="color: #000000">.</span><span style="color: #001080">body</span><span style="color: #000000">)</span>
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">calculatedSignature</span><span style="color: #000000"> === </span><span style="color: #001080">req</span><span style="color: #000000">.</span><span style="color: #795E26">header</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Signature&#039;</span><span style="color: #000000">))</span>
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/enums.html">enums</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/enums_currency.html">enums/<wbr>Currency</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/enums_newpaymentstatus.html">enums/<wbr>New<wbr>Payment<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/enums_paymentstatus.html">enums/<wbr>Payment<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/errors.html">errors</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/errors_paynowerror.html">errors/<wbr>Pay<wbr>Now<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/index.html">index</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/payment.html">payment</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/payment_buyer.html">payment/<wbr>Buyer</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/payment_payment.html">payment/<wbr>Payment</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/payment_phone.html">payment/<wbr>Phone</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/paynow.html">paynow</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/paynow_paynow.html">paynow/<wbr>Pay<wbr>Now</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/paynow_paynowoptions.html">paynow/<wbr>Pay<wbr>Now<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/paynow_endpoints.html">paynow/endpoints</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responses.html">responses</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responses_error.html">responses/<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responses_errorresponse.html">responses/<wbr>Error<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responses_paymentcreatedresponse.html">responses/<wbr>Payment<wbr>Created<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/responses_paymentstatusresponse.html">responses/<wbr>Payment<wbr>Status<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/utils.html">utils</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/utils_hash.html">utils/hash</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
