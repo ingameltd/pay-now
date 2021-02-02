@@ -15,6 +15,13 @@ export class PayNow {
     private client: AxiosInstance
     private options: PayNowOptions
 
+    /**
+     * Creates an instance of PayNow.
+     * @param {string} apiKey - API Key from panel
+     * @param {string} signatureKey - Signature Key from panel
+     * @param {PayNowOptions} [options={ sandbox: false }] - options
+     * @memberof PayNow
+     */
     constructor(
         apiKey: string,
         signatureKey: string,
