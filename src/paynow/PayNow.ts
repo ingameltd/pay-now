@@ -1,19 +1,27 @@
 import Axios, { AxiosInstance } from 'axios';
 import { PayNowOptions } from './PayNowOptions';
-import { EndpointPayments, ProductionUrl, SandboxUrl } from './endpoints';
+import { EndpointPayments, EndpointRefunds, ProductionUrl, SandboxUrl } from './endpoints';
 import { Payment } from '../payment';
 import { v4 as uuidv4 } from 'uuid';
 import { calculateHmac, jsonStringify } from '../utils/hash';
 import { ErrorResponse, PaymentCreatedResponse, PaymentStatusResponse } from '../responses';
 import { PayNowError } from '../errors';
+import { RefundReason } from '../enums';
+import { RefundCreatedResponse } from '../responses/RefundRequestCreatedResponse';
+import { RefundStatusResponse } from '../responses/RefundStatusResponse';
 
-
+/**
+ * Creates a paynow instance
+ *
+ * @export
+ * @class PayNow
+ */
 export class PayNow {
-    private apiKey: string
-    private signatureKey: string
-    private baseUrl: string
-    private client: AxiosInstance
-    private options: PayNowOptions
+    private apiKey: string;
+    private signatureKey: string;
+    private baseUrl: string;
+    private client: AxiosInstance;
+    private options: PayNowOptions;
 
     /**
      * Creates an instance of PayNow.
@@ -22,22 +30,18 @@ export class PayNow {
      * @param {PayNowOptions} [options={ sandbox: false }] - options
      * @memberof PayNow
      */
-    constructor(
-        apiKey: string,
-        signatureKey: string,
-        options: PayNowOptions = { sandbox: false }
-    ) {
-        this.apiKey = apiKey
-        this.signatureKey = signatureKey
-        this.options = options
+    constructor(apiKey: string, signatureKey: string, options: PayNowOptions = { sandbox: false }) {
+        this.apiKey = apiKey;
+        this.signatureKey = signatureKey;
+        this.options = options;
         this.baseUrl = !this.options.sandbox ? ProductionUrl : SandboxUrl;
 
         this.client = Axios.create({
             baseURL: this.baseUrl,
             headers: {
-                'Api-Key': this.apiKey
-            }
-        })
+                'Api-Key': this.apiKey,
+            },
+        });
     }
 
     /**
@@ -48,26 +52,26 @@ export class PayNow {
      * @throws {PayNowError}
      * @memberof PayNow
      */
-    public async createPayment (payment: Payment): Promise<PaymentCreatedResponse> {
+    public async createPayment(payment: Payment): Promise<PaymentCreatedResponse> {
         try {
-            const paymentRequest = jsonStringify(payment)
-            const signature = this.calculateSignature(payment)
+            const paymentRequest = jsonStringify(payment);
+            const signature = this.calculateSignature(payment);
 
             const { data } = await this.client.post(EndpointPayments, paymentRequest, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Signature': signature,
-                    'Idempotency-Key': uuidv4()
-                }
-            })
+                    Signature: signature,
+                    'Idempotency-Key': uuidv4(),
+                },
+            });
 
-            return <PaymentCreatedResponse>data
+            return <PaymentCreatedResponse>data;
         } catch (error) {
             if (error.response && error.response.data) {
-                const resp = <ErrorResponse>error.response.data
-                throw new PayNowError(resp.statusCode, resp.errors)
+                const resp = <ErrorResponse>error.response.data;
+                throw new PayNowError(resp.statusCode, resp.errors);
             }
-            throw new PayNowError(error.response.status)
+            throw new PayNowError(error.response.status);
         }
     }
 
@@ -79,16 +83,75 @@ export class PayNow {
      * @throws {PayNowError}
      * @memberof PayNow
      */
-    public async paymentStatus (paymentId: string): Promise<PaymentStatusResponse> {
+    public async paymentStatus(paymentId: string): Promise<PaymentStatusResponse> {
         try {
-            const { data } = await this.client.get(`${EndpointPayments}/${paymentId}/status`)
-            return <PaymentStatusResponse>data
+            const { data } = await this.client.get(`${EndpointPayments}/${paymentId}/status`);
+            return <PaymentStatusResponse>data;
         } catch (error) {
             if (error.response && error.response.data) {
-                const resp = <ErrorResponse>error.response.data
-                throw new PayNowError(resp.statusCode, resp.errors)
+                const resp = <ErrorResponse>error.response.data;
+                throw new PayNowError(resp.statusCode, resp.errors);
             }
-            throw new PayNowError(error.response.status)
+            throw new PayNowError(error.response.status);
+        }
+    }
+
+    /**
+     * Create refund request
+     *
+     * @param {string} paymentId - payment id from paynow
+     * @param {number} amount - amount to refund
+     * @param {RefundReason} reason - reason for refund
+     * @returns {Promise<RefundCreatedResponse>}
+     * @memberof PayNow
+     */
+    public async createRefundRequest(
+        paymentId: string,
+        amount: number,
+        reason: RefundReason,
+    ): Promise<RefundCreatedResponse> {
+        try {
+            const refundRequest = jsonStringify({
+                amount: amount,
+                reason: reason,
+            });
+            const signature = this.calculateSignature(refundRequest);
+
+            const { data } = await this.client.post(`${EndpointPayments}/${paymentId}/refunds`, refundRequest, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Signature: signature,
+                    'Idempotency-Key': uuidv4(),
+                },
+            });
+
+            return <RefundCreatedResponse>data;
+        } catch (error) {
+            if (error.response && error.response.data) {
+                const resp = <ErrorResponse>error.response.data;
+                throw new PayNowError(resp.statusCode, resp.errors);
+            }
+            throw new PayNowError(error.response.status);
+        }
+    }
+
+    /**
+     * Check refund status of an refund request
+     *
+     * @param {string} refundId - id for refund
+     * @returns {Promise<RefundStatusResponse>}
+     * @memberof PayNow
+     */
+    public async refundStatus(refundId: string): Promise<RefundStatusResponse> {
+        try {
+            const { data } = await this.client.get(`${EndpointRefunds}/${refundId}/status`);
+            return <RefundStatusResponse>data;
+        } catch (error) {
+            if (error.response && error.response.data) {
+                const resp = <ErrorResponse>error.response.data;
+                throw new PayNowError(resp.statusCode, resp.errors);
+            }
+            throw new PayNowError(error.response.status);
         }
     }
 
@@ -99,10 +162,14 @@ export class PayNow {
      * @returns {string}
      * @memberof PayNow
      */
-    public calculateSignature (data: string | object): string {
-        if (typeof data === 'object') {
-            data = jsonStringify(data)
+    public calculateSignature(data: string | unknown): string {
+        let hmacData: string;
+
+        if (typeof data === 'string') {
+            hmacData = data;
+        } else {
+            hmacData = jsonStringify(data);
         }
-        return calculateHmac(this.signatureKey, data)
+        return calculateHmac(this.signatureKey, hmacData);
     }
 }
