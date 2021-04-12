@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Error | @ingameltd/pay-now</title>
+	<title>RefundStatusResponse | @ingameltd/pay-now</title>
 	<meta name="description" content="Documentation for @ingameltd/pay-now">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,24 +55,38 @@
 					<a href="../modules.html">@ingameltd/pay-now</a>
 				</li>
 				<li>
-					<a href="../modules/responses.html">responses</a>
+					<a href="../modules/responses_refundstatusresponse.html">responses/RefundStatusResponse</a>
 				</li>
 				<li>
-					<a href="responses.error.html">Error</a>
+					<a href="responses_refundstatusresponse.refundstatusresponse.html">RefundStatusResponse</a>
 				</li>
 			</ul>
-			<h1>Interface Error</h1>
+			<h1>Interface RefundStatusResponse</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Refund status response</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+						<dt>interface</dt>
+						<dd><p>RefundStatusResponse</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Error</span>
+						<span class="target">RefundStatusResponse</span>
 					</li>
 				</ul>
 			</section>
@@ -83,8 +97,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="responses.error.html#errortype" class="tsd-kind-icon">error<wbr>Type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="responses.error.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="responses_refundstatusresponse.refundstatusresponse.html#failurereason" class="tsd-kind-icon">failure<wbr>Reason</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="responses_refundstatusresponse.refundstatusresponse.html#refundid" class="tsd-kind-icon">refund<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="responses_refundstatusresponse.refundstatusresponse.html#status" class="tsd-kind-icon">status</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,41 +108,61 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="errortype" class="tsd-anchor"></a>
-					<h3>error<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">error<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="failurereason" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> failure<wbr>Reason</h3>
+					<div class="tsd-signature tsd-kind-icon">failure<wbr>Reason<span class="tsd-signature-symbol">:</span> <a href="../enums/enums_refundfailurereason.refundfailurereason.html#cardbalanceerror" class="tsd-signature-type" data-tsd-kind="Enumeration member">CardBalanceError</a><span class="tsd-signature-symbol"> | </span><a href="../enums/enums_refundfailurereason.refundfailurereason.html#buyeraccountclosed" class="tsd-signature-type" data-tsd-kind="Enumeration member">BuyerAccountClosed</a><span class="tsd-signature-symbol"> | </span><a href="../enums/enums_refundfailurereason.refundfailurereason.html#other" class="tsd-signature-type" data-tsd-kind="Enumeration member">Other</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ingameltd/pay-now/blob/d6a053b/src/responses/Error.ts#L8">src/responses/Error.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/ingameltd/pay-now/blob/3c14e57/src/responses/RefundStatusResponse.ts#L33">src/responses/RefundStatusResponse.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Error type</p>
+							<p>Reason if status is <code>FAIL</code></p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>Error</p>
+							<dd><p>RefundStatusResponse</p>
 							</dd>
 						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="refundid" class="tsd-anchor"></a>
+					<h3>refund<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">refund<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ingameltd/pay-now/blob/d6a053b/src/responses/Error.ts#L16">src/responses/Error.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/ingameltd/pay-now/blob/3c14e57/src/responses/RefundStatusResponse.ts#L17">src/responses/RefundStatusResponse.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Error message</p>
+							<p>Unique ID of a refund generated by Paynow</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>memberof</dt>
-							<dd><p>Error</p>
+							<dd><p>RefundStatusResponse</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="../enums/enums_refundstatus.refundstatus.html" class="tsd-signature-type" data-tsd-kind="Enumeration">RefundStatus</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ingameltd/pay-now/blob/3c14e57/src/responses/RefundStatusResponse.ts#L25">src/responses/RefundStatusResponse.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Current status of the refund</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>RefundStatus</p>
 							</dd>
 						</dl>
 					</div>
@@ -140,71 +175,8 @@
 					<li class=" ">
 						<a href="../modules.html">Exports</a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/enums.html">enums</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/enums_currency.html">enums/<wbr>Currency</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/enums_newpaymentstatus.html">enums/<wbr>New<wbr>Payment<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/enums_paymentstatus.html">enums/<wbr>Payment<wbr>Status</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/errors.html">errors</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/errors_paynowerror.html">errors/<wbr>Pay<wbr>Now<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/payment.html">payment</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/payment_buyer.html">payment/<wbr>Buyer</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/payment_payment.html">payment/<wbr>Payment</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/payment_phone.html">payment/<wbr>Phone</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/paynow.html">paynow</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/paynow_paynow.html">paynow/<wbr>Pay<wbr>Now</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/paynow_paynowoptions.html">paynow/<wbr>Pay<wbr>Now<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/paynow_endpoints.html">paynow/endpoints</a>
-					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/responses.html">responses</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/responses_error.html">responses/<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/responses_errorresponse.html">responses/<wbr>Error<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/responses_paymentcreatedresponse.html">responses/<wbr>Payment<wbr>Created<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/responses_paymentstatusresponse.html">responses/<wbr>Payment<wbr>Status<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/utils.html">utils</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/utils_hash.html">utils/hash</a>
+						<a href="../modules/responses_refundstatusresponse.html">responses/<wbr>Refund<wbr>Status<wbr>Response</a>
 					</li>
 				</ul>
 			</nav>
@@ -213,27 +185,21 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="responses.error.html" class="tsd-kind-icon">Error</a>
+						<a href="responses_refundstatusresponse.refundstatusresponse.html" class="tsd-kind-icon">Refund<wbr>Status<wbr>Response</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="responses.error.html#errortype" class="tsd-kind-icon">error<wbr>Type</a>
+								<a href="responses_refundstatusresponse.refundstatusresponse.html#failurereason" class="tsd-kind-icon">failure<wbr>Reason</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="responses.error.html#message" class="tsd-kind-icon">message</a>
+								<a href="responses_refundstatusresponse.refundstatusresponse.html#refundid" class="tsd-kind-icon">refund<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="responses_refundstatusresponse.refundstatusresponse.html#status" class="tsd-kind-icon">status</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="responses.errorresponse.html" class="tsd-kind-icon">Error<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="responses.paymentcreatedresponse.html" class="tsd-kind-icon">Payment<wbr>Created<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="responses.paymentstatusresponse.html" class="tsd-kind-icon">Payment<wbr>Status<wbr>Response</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
