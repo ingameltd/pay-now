@@ -32,5 +32,5 @@ export enum Currency {
     PLN = 'PLN',
     EUR = 'EUR',
     GBP = 'GPB',
-    CZK = 'CZK'
+    CZK = 'CZK',
 }

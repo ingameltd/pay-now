@@ -1,4 +1,4 @@
-import { Error } from "./Error";
+import { Error } from './Error';
 
 export interface ErrorResponse {
     /**
@@ -7,7 +7,7 @@ export interface ErrorResponse {
      * @type {Error[]}
      * @memberof ErrorResponse
      */
-    errors?: Error[],
+    errors?: Error[];
 
     /**
      * Error code
@@ -15,5 +15,5 @@ export interface ErrorResponse {
      * @type {number}
      * @memberof ErrorResponse
      */
-    statusCode: number
+    statusCode: number;
 }

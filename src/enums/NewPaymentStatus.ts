@@ -1,4 +1,4 @@
 export enum NewPaymentStatus {
-    New = "NEW",
-    Error = "ERROR"
+    New = 'NEW',
+    Error = 'ERROR',
 }

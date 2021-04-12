@@ -1,4 +1,4 @@
-import { PaymentStatus } from "../enums";
+import { PaymentStatus } from '../enums';
 
 /**
  * Payment status response

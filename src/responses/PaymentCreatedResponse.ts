@@ -1,4 +1,4 @@
-import { NewPaymentStatus } from "../enums";
+import { NewPaymentStatus } from '../enums';
 
 export interface PaymentCreatedResponse {
     /**
