@@ -31,7 +31,7 @@
  * @extends {Error}
  */
 export class PayNowError extends Error {
-    constructor(statusCode: Number, errors?: unknown) {
+    constructor(statusCode: number, errors?: unknown) {
         super(`error = ${statusCode}, errors = ${JSON.stringify(errors)}`); // 'Error' breaks prototype chain here
         Object.setPrototypeOf(this, new.target.prototype);
     }

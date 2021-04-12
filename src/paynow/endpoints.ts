@@ -1,4 +1,5 @@
-export const ProductionUrl: string = ' https://api.paynow.pl/v1';
-export const SandboxUrl: string = 'https://api.sandbox.paynow.pl/v1';
+export const ProductionUrl = ' https://api.paynow.pl/v1';
+export const SandboxUrl = 'https://api.sandbox.paynow.pl/v1';
 
-export const EndpointPayments: string = '/payments'
+export const EndpointPayments = '/payments';
+export const EndpointRefunds = '/refunds';

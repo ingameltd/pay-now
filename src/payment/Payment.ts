@@ -1,5 +1,5 @@
-import { Currency } from "../enums";
-import { Buyer } from "./Buyer";
+import { Currency } from '../enums';
+import { Buyer } from './Buyer';
 
 /**
  * Payment details
@@ -43,7 +43,7 @@ export interface Payment {
     description: string;
 
     /**
-     * The URL that the buyer will be redirected to, after making payment. 
+     * The URL that the buyer will be redirected to, after making payment.
      * This URL overrides `return_url` value from PoS configuration.
      *
      * @type {string}

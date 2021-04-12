@@ -5,5 +5,5 @@ export interface PayNowOptions {
      * @type {boolean}
      * @memberof PayNowOptions
      */
-    sandbox?: boolean
+    sandbox?: boolean;
 }
