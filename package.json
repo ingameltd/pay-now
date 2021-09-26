@@ -1,6 +1,6 @@
 {
   "name": "@ingameltd/pay-now",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple library for connecting pay-now service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,12 +19,8 @@
     "url": "git+https://github.com/ingameltd/pay-now.git"
   },
   "keywords": [
-    "przelewy24",
-    "nodejs",
-    "p24",
-    "P24",
-    "przelewy",
-    "library"
+    "paynow",
+    "nodejs"
   ],
   "publishConfig": {
     "access": "public"
